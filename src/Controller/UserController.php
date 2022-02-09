@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +17,7 @@ class UserController extends AbstractController
      * @return Response
      * TODO Définissez la route pour accéder à cette fonction du controller UserController
      */
-
+    #[Route('/userList', name: 'userList', methods: ['GET'])]
     public function list(): Response
     {
         $message = '
@@ -42,6 +43,7 @@ class UserController extends AbstractController
      * @return Response
      * TODO Définissez cette route, n'oubliez pas de définir le paramètre pour être en mesure d'éditer l'utilisateur.
      */
+    #[Route('/userEdit={userID}', name: 'userEdit', methods: ['GET'])]
     public function edit(int $userID): Response
     {
         $html = '
@@ -59,6 +61,7 @@ class UserController extends AbstractController
      * @return Response
      * TODO Définissez cette route.
      */
+    #[Route('/userDelete/{userId<[0-9]{1,10}>}', name: 'userDelete', methods: ['GET'])]
     public function delete(int $userId): Response
     {
         $html = '
